@@ -1,0 +1,26 @@
+.productname{
+    font-size: 18px;
+    line-height: 1.3em;
+    min-height: 4em;
+    font-family: 'Amiko', sans-serif;
+    font-weight: 500;
+}
+.productimg{
+    height: 150px !important;
+    
+}
+.addtocart,.buynow{
+    display: inline;
+
+}
+.productprice{
+    font-family: 'Amiko', sans-serif;
+    font-weight: bold;
+    margin-top: 5px;
+    color: blue;
+}
+
+.productlink{
+    text-decoration: none !important;
+    color: black;
+}

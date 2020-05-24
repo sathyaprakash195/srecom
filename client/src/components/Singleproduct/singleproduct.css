@@ -1,0 +1,29 @@
+
+.plink{
+  text-decoration: none !important;
+}
+
+.pimgs{
+  height: 500px;
+}
+.pnames{
+  text-align: left !important;
+  font-family: 'Amiko', sans-serif;
+  font-size: 25px;
+  font-weight: bold;
+}
+.pdescs{
+  text-align: left !important;
+}
+.prating{
+  font-weight: bold;
+  text-align: left;
+  font-family: 'Amiko', sans-serif;
+}
+
+  .paddtocart,.pbuynow{
+  float: right;
+
+  margin-right: 10px;
+
+}
