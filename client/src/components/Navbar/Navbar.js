@@ -55,11 +55,7 @@ function Navbar(props) {
                 ShopNow
                           </NavLink>
             </li>
-            <li className="nav-item">
-              <NavLink className="nav-link" to="/categories">
-                Categories
-                          </NavLink>
-            </li>
+          
 
           </ul>
 
@@ -75,7 +71,7 @@ function Navbar(props) {
                   </li>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                       <a class="dropdown-item" href="/orders">Orders</a>
-                      <a class="dropdown-item" href="#">Profile</a>
+                      <a class="dropdown-item" href="profile">Profile</a>
                       <a class="dropdown-item" onClick={logout}>LogOut</a>
                     </div>
                   </div>

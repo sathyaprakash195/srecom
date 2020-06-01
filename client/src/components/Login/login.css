@@ -2,3 +2,9 @@
     box-shadow: none !important;
     margin: 10px;
 }
+
+.loading{
+    position: absolute;
+    top: 40%;
+    left: 45%;
+}

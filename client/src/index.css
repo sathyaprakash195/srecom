@@ -5,6 +5,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  
 }
 html{
   scroll-behavior: smooth;
@@ -17,3 +19,4 @@ input{
   box-shadow: none !important;
   margin: 10px;
 }
+

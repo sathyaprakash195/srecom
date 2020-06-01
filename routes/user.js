@@ -128,10 +128,10 @@ router.get('/getusers',middleware.checkToken, (req, res) => {
 
 });
 
-router.post('/getuserbyid', (req, res) => {
+router.post('/getcurrentuser', (req, res) => {
 
-  User.findById({
-    _id: req.body.id
+  User.find({
+    email: req.body.useremail
   }, (err, doc) => {
     if (err) {
       console.log(`Error: ` + err)
@@ -197,7 +197,7 @@ router.post('/loginuser', (req, res) => {
             if(doc.isVerified)
             {
               var token = jwt.sign({ email: doc.email,name:doc.name }, 'sathya');
-              res.send({token:token});
+              res.send({token:token,user:doc});
             }
             else{
               res.send('1');

@@ -2,6 +2,7 @@ import React, { Component, createContext, useContext } from 'react';
 import { Cartprovider } from './Cartcontext';
 import axios from 'axios';
 import  swal  from 'sweetalert';
+import { set } from 'mongoose';
 export const Orderprovider = createContext();
 const shortid = require('shortid');
 
@@ -23,7 +24,8 @@ class Ordercontext extends Component {
                     'authorization': localStorage.getItem('loggedin')
                 }
             },
-            orderslist:[]
+            orderslist:[],
+            loading:'none'
 
 
         }
@@ -34,7 +36,8 @@ class Ordercontext extends Component {
 
 
     placeorder = (cartlist, totalprice, shipping) => {
-
+        
+        this.setState({loading:'block'})
         shipping.mobile = Number(shipping.mobile)
 
         var items = [];
@@ -68,7 +71,17 @@ class Ordercontext extends Component {
         axios.post('api/order/placeorder', order,this.state.authconfig).
             then((res) => {
                 console.log(res);
-                swal(res.data)
+                if(res.data)
+                {
+                    swal('Congratulations','Your order has been placed success','success')
+                    this.setState({loading:'none'})
+                }
+                else
+                {
+                    this.setState({loading:'none'})
+                    swal('Something went wrong','Please try again after sometime','error')
+
+                }
             }).catch((err)=>{
                 if(err.response.status)
                 {

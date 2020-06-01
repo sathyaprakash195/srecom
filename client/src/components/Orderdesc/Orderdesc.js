@@ -73,7 +73,7 @@ function Orderdesc({ match }) {
                         </li>
 
 
-                        <button className="btn btn-success m-5" onClick={window.print()}>Download Receipt</button>
+                        <button className="btn btn-success m-5">Download Receipt</button>
                     </div>
                  </div>
              </div>

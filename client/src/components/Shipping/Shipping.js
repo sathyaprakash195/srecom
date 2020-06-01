@@ -5,11 +5,13 @@ import { TextareaAutosize } from '@material-ui/core';
 import { useHistory } from 'react-router-dom';
 import { Orderprovider } from './../../Contexts/Ordercontext';
 import { Cartprovider } from './../../Contexts/Cartcontext';
+import ReactLoading from 'react-loading';
 function Shipping(props) {
     const ordercontext=useContext(Orderprovider);
     const cartcontext=useContext(Cartprovider);
     const placeorder=ordercontext.placeorder;
     const history=useHistory();
+    const loading=ordercontext.loading;
     const [name, setname] = useState();
     const [mobile, setmobile] = useState();
     const [pincode, setpincode] = useState();
@@ -22,6 +24,10 @@ function Shipping(props) {
         address:address
     }
    
+    function validate(e) {
+        e.preventDefault();
+        placeorder(cartcontext.cartlist,cartcontext.totalprice,shipping)
+    }
 
 
     return (
@@ -29,11 +35,19 @@ function Shipping(props) {
             
 
             <div className="col-md-12 p-2">
+
+               <div className='loading' style={{ display: loading }}>
+                    <ReactLoading type='bars' color='#006666' />
+                </div>
+
+
             <h1 style={{fontSize:'30px'}} className="mt-5">Shipping Details</h1>
       
-                <input type="text"
+              <form onSubmit={validate}>
+              <input type="text"
                     className="form-control sinput"
                     placeholder="Name"
+                    required
                     onChange={(e) => { setname(e.target.value) }}
                 />
 
@@ -46,24 +60,25 @@ function Shipping(props) {
                 <input type="text"
                     className="form-control sinput"
                     placeholder="Pincode"
+                    required
                     onChange={(e) => { setpincode(e.target.value) }}
                 />
 
                 <textarea className="form-control" 
                 rows={3} 
+                required
                 onChange={(e)=>{setaddress(e.target.value)}} />
 
-                <select className="custom-select my-1 mr-sm-2 sinput">
+                <select className="custom-select my-1 mr-sm-2 sinput" required>
                   <option selected value="cod">Select Payment Method</option>
                   <option value="db">DebitCard</option>
                   <option value="cr">Credit Card</option>
                   <option value="upi">Upi</option>
                 </select>
-
-               <button className="btn btn-primary m-2" 
-               style={{float:'right'}}
-               onClick={()=>placeorder(cartcontext.cartlist,cartcontext.totalprice,shipping)}
-               >Place Order</button>
+               
+               <input type="submit" value="Place Order" className="btn btn-success mt-2" style={{width:'100px',float:'right'}}/>
+              
+              </form>
             </div>
         </div>
     );

@@ -12,8 +12,11 @@ class usercontext extends Component {
             register:this.register,
             login:this.login,
             deleteuser:this.deleteuser,
+            getcurrentuser:this.getcurrentuser,
+            currentuser:{},
             logout:this.logout,
-            userslist:[]
+            userslist:[],
+            loading:'none'
          }
     }
 
@@ -29,24 +32,31 @@ class usercontext extends Component {
     }
     register=(user)=>{
         
+        this.setState({loading:'block'})
 
         axios.post('/api/user/registeruser', user).then(
             res => {
                 swal(res.data)
+                this.setState({loading:'none'})
             }
         )
     }
 
     login=(user)=>{
+
+        this.setState({loading:'block'})
         axios.post('/api/user/loginuser', user).then(
             res => {
                 if (res.data.token) {
                     localStorage.setItem('loggedin', res.data.token);
                     localStorage.setItem('useremail',user.email);
                     console.log(res.data.token);
+                   
+                    
+
                     swal('Login Successfull','Dont forget to do logout after session','success').
                     then(()=>{
-                        return window.location = '/products';
+                        return window.location = '/products'; 
                     })
                   
                 }
@@ -56,6 +66,8 @@ class usercontext extends Component {
                 else {
                     swal('Invalid Username or Password','','error')
                 }
+
+                this.setState({loading:'none'})
             }
         )
     }
@@ -71,6 +83,16 @@ class usercontext extends Component {
            alert(err.data);
        })
        
+
+    }
+
+    getcurrentuser=()=>{
+
+        axios.post('/api/user/getcurrentuser',{useremail:localStorage.getItem('useremail')})
+        .then((res)=>{
+            this.setState({currentuser:res.data[0]},()=>{})
+        })
+        
 
     }
 

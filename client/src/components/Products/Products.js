@@ -3,10 +3,12 @@ import Navbar from './../Navbar/Navbar';
 import axios from 'axios';
 import {useHistory, Link} from 'react-router-dom';
 import './products.css'
+
 import Filter from './../Filter/Filter';
 
 import { Productsprovider } from './../../Contexts/Productscontext';
 import { Cartprovider } from './../../Contexts/Cartcontext';
+import Footer from './../Footer/Footer';
 function Products(props) {
 
     const productscontext=useContext(Productsprovider)
@@ -50,7 +52,7 @@ function Products(props) {
                 </div>
 
             </div>
-
+            <Footer/>
         </div>
 
 

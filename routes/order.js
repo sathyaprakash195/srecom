@@ -12,7 +12,7 @@ router.post('/placeorder', verifyuser.checkToken ,(req, res) => {
                 res.send('Insert failed'+err);
             }
             else{
-                res.send('insert success');
+                res.send('1');
             }
         })
 });

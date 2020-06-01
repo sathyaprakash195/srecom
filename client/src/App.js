@@ -24,8 +24,11 @@ import Orderslist from './components/Admin/Orderslist';
 import Productslist from './components/Admin/Productslist';
 import Addproduct from './components/Admin/Addproduct';
 import AdminNav from './components/Admin/AdminNav';
+import Profile from './components/Profile/Profile';
+import Footer from './components/Footer/Footer';
 function App() {
 
+  
 
   return (
     <div className="App">
@@ -51,6 +54,7 @@ function App() {
                   <Route path='/checkout' component={Checkout} exact />
                   <Route path='/orders' component={Orders} exact />
                   <Route path='/orderdesc/:id' component={Orderdesc} exact />
+                  <Route path='/profile' component={Profile} exact />
 
 
                   {/* Admin routes */}
@@ -67,8 +71,8 @@ function App() {
               </Switch>
 
               
-
- 
+             
+             
          </Router>
          </Cartcontext>
          </Ordercontext>
