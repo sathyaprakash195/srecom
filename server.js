@@ -19,8 +19,16 @@ app.use('/api/products/',productsroute);
 app.use('/api/user/',userroute);
 app.use('/api/order/',orderroute);
 app.use('/api/admin/',adminroute);
+const PORT=process.env.PORT || 5000;
+
+if (process.env.NODE_ENV === "production") {
+    app.use('/', express.static("client/build"));
+    app.get("*", (req, res) => {
+      res.sendFile(path.resolve(__dirname, "client/build/index.html"));
+    }); 
+  }
 
 
-app.listen(5000, () => {
+app.listen(PORT, () => {
     console.log(`Server started on port`);
 });
