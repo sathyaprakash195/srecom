@@ -4,7 +4,7 @@ var dbconnection=require('./conn');
 var mongoose=require('mongoose');
 var bodyParser=require('body-parser')
 app.use(bodyParser.json());
-
+app.use(bodyParser.urlencoded({extended: true}));
 var productsroute=require('./routes/products')
 var userroute=require('./routes/user')
 var orderroute=require('./routes/order')
