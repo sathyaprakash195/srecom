@@ -5,7 +5,7 @@ var mongoose=require('mongoose');
 var bodyParser=require('body-parser')
 app.use(bodyParser.json());
 app.use(cors());
-const path=require('path');
+
 var productsroute=require('./routes/products')
 var userroute=require('./routes/user')
 var orderroute=require('./routes/order')
