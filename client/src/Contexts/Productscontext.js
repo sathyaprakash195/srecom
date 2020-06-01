@@ -13,16 +13,18 @@ class Productscontext extends React.Component {
             filterbycategory:this.filterbycategory,
             searchbykey:this.searchbykey,
             filterbyprice:this.filterbyprice,
-           addproduct:this.addproduct
+           addproduct:this.addproduct,
+           loading:'none'
          }       
     }
    
     componentDidMount() {
-               
+        this.setState({loading:'block'})
         axios.get('/api/products/getproducts').then(
             res=>{
                 this.setState({products:res.data})
                 this.setState({sortedproducts:res.data})
+                this.setState({loading:'none'})
             }
         )
      }

@@ -3,7 +3,7 @@ import Navbar from './../Navbar/Navbar';
 import axios from 'axios';
 import {useHistory, Link} from 'react-router-dom';
 import './products.css'
-
+import ReactLoading from 'react-loading';
 import Filter from './../Filter/Filter';
 
 import { Productsprovider } from './../../Contexts/Productscontext';
@@ -16,6 +16,7 @@ function Products(props) {
     const cartcontext=useContext(Cartprovider)
     const addtocart=cartcontext.addtocart;
     const history=useHistory();
+    const loading=productscontext.loading;
     
     
 
@@ -25,7 +26,9 @@ function Products(props) {
             <Filter />
              
             <div className="container">
-
+            <div className='ploading' style={{ display: loading }}>
+                    <ReactLoading type='bars' color='#006666' />
+                </div>
                 <div className="row">
 
                     {products.map((product => {
@@ -52,7 +55,7 @@ function Products(props) {
                 </div>
 
             </div>
-            <Footer/>
+        
         </div>
 
 

@@ -5,6 +5,15 @@ const mongoose = require('mongoose');
 const nodemailer = require('nodemailer');
 var jwt = require('jsonwebtoken');
 var middleware=require('../middleware');
+
+if(process.env.NODE_ENV === "production")
+{
+  baseUrl='https://srecom.herokuapp.com';
+}
+else{
+  baseUrl='http://localhost:5000';
+}
+
 let transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
@@ -75,11 +84,12 @@ router.post('/registeruser', (req, res) => {
             // sending email verification
 
             let info = transporter.sendMail({
-              from: '"MERNCRUD"<sathyaprakash195@gmail.com>',
+              from: '"SR Ecom"<sathyaprakash195@gmail.com>',
               to: req.body.email,
               subject: "Verify Your Email",
               text: "Click on the below link to verify your email address and get login access",
-              html: '<p>Click <a href="http://localhost:5000/api/user/verifyemail/' + req.body.email + '">this link</a>click here to verify</p>'
+              html: '<p><a href="'+baseUrl+'/api/user/verifyemail/'+ req.body.email + '">Click This Link</a> to verify your email</p>'
+
             }, error => {
               if (!error) {
                 res.send('Registered successfully please verify your email');

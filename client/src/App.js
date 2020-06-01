@@ -44,6 +44,7 @@ function App() {
       
               
 
+               <div className="bodypart">
                <Switch>
                   <Route path='/' component={Homepage} exact />
                   <Route path='/login' component={Login} exact />
@@ -69,9 +70,10 @@ function App() {
 
 
               </Switch>
+               </div>
 
               
-             
+              <Footer/>
              
          </Router>
          </Cartcontext>
@@ -79,6 +81,7 @@ function App() {
         </Productscontext>
         </Usercontext>
       
+       
         
     </div>
   );
