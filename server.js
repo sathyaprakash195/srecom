@@ -9,7 +9,7 @@ var productsroute=require('./routes/products')
 var userroute=require('./routes/user')
 var orderroute=require('./routes/order')
 var adminroute=require('./routes/admin')
-
+const path=require('path');
 app.use('/api/products/',productsroute);
 app.use('/api/user/',userroute);
 app.use('/api/order/',orderroute);
